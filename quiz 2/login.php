@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD:qsn 2/session.php
 <?php
 function session_check(){
 
@@ -19,6 +20,8 @@ function session_check(){
 ?>
 
 
+=======
+>>>>>>> 7b37342c13242e3898ec36849f63037cd56e005c:quiz 2/login.php
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,17 +33,21 @@ function session_check(){
 <body>
 <p>Please enter email and password to login</p>
 <div class="container">
-<form action="session.php" method="post">
+<form action="login.php" method="post">
 email: <input type="text" name="email"><br>
 password: <input type="password" name="password"><br>
-<input type="submit" name = "submit">
+<input type="submit" class="btn" value = "LogIn" name = "login">
+<input type="submit" class="btn" value = "Sign Up" name = "signup">
 </form>
 </div>
+
 <?php
+
 require_once("databaseConnections.php");
 $con =createdb  ();
 session_start();
-if (isset($_POST['submit'])) {
+
+if (isset($_POST['login'])) {
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
@@ -51,10 +58,13 @@ if (isset($_POST['submit'])) {
 	if ($rows == 1) {
 		$_SESSION['email'] = $email;
         $_SESSION['password'] = $password;
-		echo "Login successfull .";
+		header("Location: homepage.php");
 	}else {
 		echo "Not matched ,Try again";
 	}
+}
+if (isset($_POST['signup'])){
+    header("Location: signup.php");
 }
 ?>
 </body>
