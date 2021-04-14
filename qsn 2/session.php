@@ -2,7 +2,7 @@
 <?php
 function session_check(){
 
-   
+
     if(!isset($_SESSION)) 
     { 
         session_start(); 
@@ -58,4 +58,4 @@ if (isset($_POST['submit'])) {
 }
 ?>
 </body>
-</html>
+</html> 
